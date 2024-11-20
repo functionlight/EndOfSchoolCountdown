@@ -67,6 +67,22 @@
             document.getElementById("countdown").innerHTML = `${days} Days, ${hours} Hours, ${minutes} Minutes<br>${seconds} Seconds, ${milliseconds} MS`;
         }
 
+        // Disable right-click context menu
+        document.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+        });
+
+        // Disable common keyboard shortcuts
+        document.addEventListener("keydown", (event) => {
+            if (
+                event.key === "F12" || 
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "C" || event.key === "J")) ||
+                (event.ctrlKey && event.key === "U")
+            ) {
+                event.preventDefault();
+            }
+        });
+
         // Update the countdown every millisecond
         const countdownInterval = setInterval(updateCountdown, 1);
     </script>
